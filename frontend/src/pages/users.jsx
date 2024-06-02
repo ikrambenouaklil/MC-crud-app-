@@ -1,13 +1,16 @@
+/* eslint-disable no-unused-vars */
 import { Box, Button } from "@mui/material";
-// import { alignProperty } from "@mui/material/styles/cssUtils";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
-// import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 function Users() {
-  // const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
+
   const columns = [
     {
-      field: "id",
+      field: "_id",
       headerName: "ID",
       flex: 1,
       headerAlign: "center",
@@ -35,7 +38,10 @@ function Users() {
       headerAlign: "center",
       renderCell: (params) => (
         <Box>
-          <Link to="/update" style={{ textDecoration: "none", color: "white" }}>
+          <Link
+            to={`/update/${params.row._id}`}
+            style={{ textDecoration: "none", color: "white" }}
+          >
             <Button style={{ margin: 5 }} variant="contained" color="primary">
               Edit
             </Button>
@@ -45,7 +51,7 @@ function Users() {
             style={{ margin: 5 }}
             variant="contained"
             color="error"
-            onClick={() => handleDelete(params.row.id)}
+            onClick={() => handleDelete(params.row._id)}
           >
             Delete
           </Button>
@@ -54,26 +60,39 @@ function Users() {
     },
   ];
 
- 
-
   const handleDelete = (id) => {
-    // Handle delete action here
-    console.log("Delete user with ID:", id);
+    // Send DELETE request to delete user with specified ID
+    axios
+      .delete(`http://localhost:3000/users/${id}`)
+      .then((response) => {
+        // If successful, update the users state to reflect the changes
+        setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
+      })
+      .catch((error) => {
+        console.error("Error deleting user:", error);
+      });
   };
-  const rows = [
-    { id: 1, firstName: "John", lastName: "Doe" },
-    { id: 2, firstName: "Jane", lastName: "Smith" },
-  ];
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/users")
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+      });
+  }, []);
 
   return (
-    <Box>
+    <Box sx={{  width:"100%"}}>
       <Link to="/create" style={{ textDecoration: "none", color: "white" }}>
         <Button
           variant="contained"
           color="primary"
-          sx={{ textTransform: "capitalize", mb: 1, width: "100%" }}
+          sx={{ textTransform: "capitalize", mb: 1, width: "100%"  }}
         >
-          {" "}
+         
           + Add{" "}
         </Button>
       </Link>
@@ -81,12 +100,13 @@ function Users() {
         rowHeight={60}
         sx={{
           height: 500,
-          width: 900,
+          width: 800,
           borderRadius: 2,
           backgroundColor: "white",
         }}
         columns={columns}
-        rows={rows}
+        rows={users}
+        getRowId={(row) => row._id}
       />
     </Box>
   );

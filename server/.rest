@@ -1,0 +1,22 @@
+
+
+GET http://localhost:3000/users
+###
+POST  http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "firstName": "Ikram",
+    "lastName":"Benouaklil"
+}
+
+###
+DELETE   http://localhost:3000/users/665cb3d758250159b4a26125
+
+###
+PATCH    http://localhost:3000/users/665cb4b9b0c2dd6e389d5518
+Content-Type: application/json
+
+{
+  "firstName": "Marah"
+}
