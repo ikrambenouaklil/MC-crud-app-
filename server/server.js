@@ -7,7 +7,7 @@ const PORT = 3000;
 const userRouter = require("./routes/user")
 app.use(
   cors({
-    origin:["https://mccrudhomework-ybg9.onrender.com"]
+    origin: ["https://prismatic-smakager-8526e1.netlify.app"],
   })
 );
 
