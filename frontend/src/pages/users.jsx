@@ -63,7 +63,7 @@ function Users() {
   const handleDelete = (id) => {
     // Send DELETE request to delete user with specified ID
     axios
-      .delete(`https://mccrudhomework-ybg9.onrender.com/users/${id}`)
+      .delete(`https://mccrudhomework.onrender.com/users/${id}`)
       .then((response) => {
         // If successful, update the users state to reflect the changes
         setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
@@ -75,7 +75,7 @@ function Users() {
 
   useEffect(() => {
     axios
-      .get("https://mccrudhomework-ybg9.onrender.com/users")
+      .get("https://mccrudhomework.onrender.com/users")
       .then((response) => {
         setUsers(response.data);
       })

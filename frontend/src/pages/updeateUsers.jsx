@@ -20,7 +20,7 @@ function UpdateUsers() {
   useEffect(() => {
     console.log("Fetching user data...");
     axios
-      .get(`https://mccrudhomework-ybg9.onrender.com/users/${id}`)
+      .get(`https://mccrudhomework.onrender.com/users/${id}`)
       .then((res) => {
         console.log("User data fetched successfully:", res.data);
         const userData = res.data;
@@ -53,7 +53,7 @@ function UpdateUsers() {
 
     // If all fields are filled, proceed with form submission
     axios
-      .patch(`https://mccrudhomework-ybg9.onrender.com/users/${id}`, {
+      .patch(`https://mccrudhomework.onrender.com/users/${id}`, {
         firstName,
         lastName,
       })

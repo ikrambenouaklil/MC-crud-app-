@@ -37,7 +37,7 @@ function CreateUsers() {
 
     // If all fields are filled, proceed with form submission
     axios
-      .post("https://mccrudhomework-ybg9.onrender.com/users", {
+      .post("https://mccrudhomework.onrender.com/users", {
         firstName,
         lastName,
       })

@@ -25,7 +25,10 @@ db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("connected to db"));
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://665de70f21f2e604baa07c6f--guileless-lolly-a0cabf.netlify.app/"
+  );
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, PATCH, DELETE, OPTIONS"
