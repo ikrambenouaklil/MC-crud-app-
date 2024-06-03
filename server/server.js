@@ -7,7 +7,7 @@ const PORT = 3000;
 const userRouter = require("./routes/user")
 app.use(
   cors({
-    origin: "https://mc-crud-app-2.onrender.com/",
+    origin: "https://mccrudhomework.onrender.com/",
     credentials:true
   })
 );
