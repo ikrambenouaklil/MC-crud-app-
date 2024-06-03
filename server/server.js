@@ -1,25 +1,29 @@
 // eslint-disable-next-line no-undef
 const express = require("express");
-const mongoose = require("mongoose"); 
-const cors = require("cors")
+const mongoose = require("mongoose");
+const cors = require("cors");
 const app = express();
 const PORT = 3000;
-const userRouter = require("./routes/user")
+const userRouter = require("./routes/user");
+
+// Configure CORS middleware
 app.use(
   cors({
-    origin: ["https://prismatic-smakager-8526e1.netlify.app"],
+    origin: ["https://mccrud.netlify.app", "http://localhost:5173"],
+    credentials: true,
   })
 );
 
-app.use(express.json())
+app.use(express.json());
 
-  mongoose.connect(
-    "mongodb+srv://ikrambn2002:lDSfBNMxjmIQ5VHU@crud.rc7gyjp.mongodb.net/CRUDdata"
-  );
-const db = mongoose.connection; 
+mongoose.connect(
+  "mongodb+srv://ikrambn2002:lDSfBNMxjmIQ5VHU@crud.rc7gyjp.mongodb.net/CRUDdata"
+);
+const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 
-db.once('open', ()=>console.log("connected to db"))
+db.once("open", () => console.log("connected to db"));
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
   res.setHeader(
@@ -30,6 +34,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   next();
 });
+
 app.use("/users", userRouter);
 
 app.listen(PORT, () => {
