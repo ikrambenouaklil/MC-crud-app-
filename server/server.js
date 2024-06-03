@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-undef
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -6,7 +5,11 @@ const app = express();
 const PORT = 3000;
 const userRouter = require("./routes/user");
 
-// Configure CORS middleware
+const dotenv = require("dotenv");
+dotenv.config();
+
+const DB_URL = process.env.DB_URL;
+
 app.use(
   cors({
     origin: [
@@ -19,9 +22,7 @@ app.use(
 
 app.use(express.json());
 
-mongoose.connect(
-  "mongodb+srv://ikrambn2002:lDSfBNMxjmIQ5VHU@crud.rc7gyjp.mongodb.net/CRUDdata"
-);
+mongoose.connect(DB_URL);
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 

@@ -95,18 +95,35 @@ function Users() {
           + Add{" "}
         </Button>
       </Link>
-      <DataGrid
-        rowHeight={60}
+      <Box
         sx={{
           height: 500,
           width: 800,
           borderRadius: 2,
           backgroundColor: "white",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          "@media (max-width: 768px)": {
+            width: "100%",
+            height: "auto",
+            maxHeight: 500,
+          },
         }}
-        columns={columns}
-        rows={users}
-        getRowId={(row) => row._id}
-      />
+      >
+        <DataGrid
+          rowHeight={60}
+          sx={{
+            "@media (max-width: 768px)": {
+              padding: 8,
+              fontSize: 14,
+            },
+          }}
+          columns={columns}
+          rows={users}
+          getRowId={(row) => row._id}
+        />
+      </Box>
     </Box>
   );
 }
