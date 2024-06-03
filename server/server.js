@@ -6,13 +6,9 @@ const app = express();
 const PORT = 3000;
 const userRouter = require("./routes/user")
 app.use(
-  cors({
-    //, "PATCH", "DELETE"
-    origin: "",
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
+  cors()
 );
+
 app.use(express.json())
 
   mongoose.connect(
@@ -24,6 +20,7 @@ db.on("error", (error) => console.error(error));
 db.once('open', ()=>console.log("connected to db"))
 
 app.use("/users", userRouter);
+app.
 app.listen(PORT, () => {
   console.log("listen to the port " + PORT);
 });
