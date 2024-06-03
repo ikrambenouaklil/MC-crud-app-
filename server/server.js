@@ -10,7 +10,7 @@ const userRouter = require("./routes/user");
 app.use(
   cors({
     origin: [
-      "https://mc-crud-app-homework.netlify.app/",
+      "https://mc-crud-app-homework.netlify.app",
       "http://localhost:5173",
     ],
     credentials: true,
