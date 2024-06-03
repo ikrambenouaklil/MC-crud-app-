@@ -17,24 +17,23 @@ function UpdateUsers() {
   const navigate = useNavigate();
   const { id } = useParams();
   // Fetch user data based on the ID from the API
-useEffect(() => {
-  console.log("Fetching user data...");
-  axios
-    .get(`http://localhost:3000/users/${id}`)
-    .then((res) => {
-
-      console.log("User data fetched successfully:", res.data);
-      const userData = res.data;
-      setFirstName(userData.firstName);
-      setLastName(userData.lastName);
-    })
-    .catch((err) => {
-      console.log("Error fetching user data:", err);
-    });
-}, [id]);
+  useEffect(() => {
+    console.log("Fetching user data...");
+    axios
+      .get(`https://mccrudhomework-ybg9.onrender.com/users/${id}`)
+      .then((res) => {
+        console.log("User data fetched successfully:", res.data);
+        const userData = res.data;
+        setFirstName(userData.firstName);
+        setLastName(userData.lastName);
+      })
+      .catch((err) => {
+        console.log("Error fetching user data:", err);
+      });
+  }, [id]);
 
   const submit = (e) => {
-     e.preventDefault();
+    e.preventDefault();
 
     // Check if first name is empty
     if (!firstName.trim()) {
@@ -54,7 +53,7 @@ useEffect(() => {
 
     // If all fields are filled, proceed with form submission
     axios
-      .patch(`http://localhost:3000/users/${id}`, {
+      .patch(`https://mccrudhomework-ybg9.onrender.com/users/${id}`, {
         firstName,
         lastName,
       })
@@ -122,7 +121,6 @@ useEffect(() => {
               helperText={lastNameError ? "Last Name is required" : ""}
               error={lastNameError}
               variant="filled"
-            
               value={lastName}
               onChange={(e) => {
                 setLastName(e.target.value);

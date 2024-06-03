@@ -37,7 +37,7 @@ function CreateUsers() {
 
     // If all fields are filled, proceed with form submission
     axios
-      .post("http://localhost:3000/users", {
+      .post("https://mccrudhomework-ybg9.onrender.com/users", {
         firstName,
         lastName,
       })
@@ -68,7 +68,6 @@ function CreateUsers() {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-          
         }}
       >
         <p
@@ -83,7 +82,7 @@ function CreateUsers() {
         </p>
 
         <FormControl sx={{ width: "100%" }}>
-          <FormGroup sx={{display:"flex" , flexDirection:"column", gap:1}}>
+          <FormGroup sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             <TextField
               required
               id="standard-required"
@@ -96,7 +95,6 @@ function CreateUsers() {
                 setFirstName(e.target.value);
                 setFirstNameError(false); // Reset error when user types
               }}
-              
             />
             <TextField
               required
@@ -110,7 +108,6 @@ function CreateUsers() {
                 setLastName(e.target.value);
                 setLastNameError(false); // Reset error when user types
               }}
-              
             />
             <Button
               type="submit"

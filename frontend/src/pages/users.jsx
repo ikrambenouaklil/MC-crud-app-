@@ -63,7 +63,7 @@ function Users() {
   const handleDelete = (id) => {
     // Send DELETE request to delete user with specified ID
     axios
-      .delete(`http://localhost:3000/users/${id}`)
+      .delete(`https://mccrudhomework-ybg9.onrender.com/users/${id}`)
       .then((response) => {
         // If successful, update the users state to reflect the changes
         setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
@@ -75,7 +75,7 @@ function Users() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/users")
+      .get("https://mccrudhomework-ybg9.onrender.com/users")
       .then((response) => {
         setUsers(response.data);
       })
@@ -85,14 +85,13 @@ function Users() {
   }, []);
 
   return (
-    <Box sx={{  width:"100%"}}>
+    <Box sx={{ width: "100%" }}>
       <Link to="/create" style={{ textDecoration: "none", color: "white" }}>
         <Button
           variant="contained"
           color="primary"
-          sx={{ textTransform: "capitalize", mb: 1, width: "100%"  }}
+          sx={{ textTransform: "capitalize", mb: 1, width: "100%" }}
         >
-         
           + Add{" "}
         </Button>
       </Link>
