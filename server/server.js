@@ -28,10 +28,7 @@ db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("connected to db"));
 
 app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://mc-crud-app-homework.netlify.app/"
-  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, PATCH, DELETE, OPTIONS"
