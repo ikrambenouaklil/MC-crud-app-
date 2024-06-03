@@ -8,6 +8,7 @@ const userRouter = require("./routes/user")
 app.use(
   cors({
     origin: "https://mc-crud-app-2.onrender.com/",
+    credentials:true
   })
 );
 
