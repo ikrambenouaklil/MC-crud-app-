@@ -5,7 +5,6 @@ const app = express();
 const PORT = 3000;
 const userRouter = require("./routes/user");
 
-const dotenv = require("dotenv");
 dotenv.config();
 
 const DB_URL = process.env.DB_URL;
