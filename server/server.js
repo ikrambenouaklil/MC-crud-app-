@@ -6,7 +6,9 @@ const app = express();
 const PORT = 3000;
 const userRouter = require("./routes/user")
 app.use(
-  cors()
+  cors({
+    origin: "https://mc-crud-app-2.onrender.com/",
+  })
 );
 
 app.use(express.json())
