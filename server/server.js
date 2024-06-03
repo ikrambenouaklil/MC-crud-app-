@@ -7,8 +7,7 @@ const PORT = 3000;
 const userRouter = require("./routes/user")
 app.use(
   cors({
-    origin:["https://mccrudhomework-ybg9.onrender.com","http://localhost:5173"],
-  
+    origin:["https://mccrudhomework-ybg9.onrender.com"]
   })
 );
 
@@ -21,7 +20,16 @@ const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 
 db.once('open', ()=>console.log("connected to db"))
-
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  next();
+});
 app.use("/users", userRouter);
 
 app.listen(PORT, () => {
