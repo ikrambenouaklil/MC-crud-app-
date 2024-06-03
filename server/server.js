@@ -4,10 +4,10 @@ const cors = require("cors");
 const app = express();
 const PORT = 3000;
 const userRouter = require("./routes/user");
+// const dotenv = require("dotenv");
+// dotenv.config();
 
-dotenv.config();
-
-const DB_URL = process.env.DB_URL;
+// const DB_URL = process.env.DB_URL;
 
 app.use(
   cors({
@@ -21,7 +21,7 @@ app.use(
 
 app.use(express.json());
 
-mongoose.connect(DB_URL);
+mongoose.connect(process.env.DB_URL);
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 
