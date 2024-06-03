@@ -10,7 +10,7 @@ const userRouter = require("./routes/user");
 app.use(
   cors({
     origin: [
-      "https://665de70f21f2e604baa07c6f--guileless-lolly-a0cabf.netlify.app/",
+      "https://mc-crud-app-homework.netlify.app/",
       "http://localhost:5173",
     ],
     credentials: true,
@@ -30,7 +30,7 @@ db.once("open", () => console.log("connected to db"));
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://665de70f21f2e604baa07c6f--guileless-lolly-a0cabf.netlify.app/"
+    "https://mc-crud-app-homework.netlify.app/"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
