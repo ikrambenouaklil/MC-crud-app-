@@ -5,7 +5,14 @@ const cors = require("cors")
 const app = express();
 const PORT = 3000;
 const userRouter = require("./routes/user")
-app.use(cors());
+app.use(
+  cors({
+    //, "PATCH", "DELETE"
+    origin: "",
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 app.use(express.json())
 
   mongoose.connect(
