@@ -9,7 +9,10 @@ const userRouter = require("./routes/user");
 // Configure CORS middleware
 app.use(
   cors({
-    origin: ["https://mccrud.netlify.app", "http://localhost:5173"],
+    origin: [
+      "https://665de70f21f2e604baa07c6f--guileless-lolly-a0cabf.netlify.app/",
+      "http://localhost:5173",
+    ],
     credentials: true,
   })
 );
