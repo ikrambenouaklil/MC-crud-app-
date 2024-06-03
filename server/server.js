@@ -20,7 +20,7 @@ db.on("error", (error) => console.error(error));
 db.once('open', ()=>console.log("connected to db"))
 
 app.use("/users", userRouter);
-app.
+
 app.listen(PORT, () => {
   console.log("listen to the port " + PORT);
 });
